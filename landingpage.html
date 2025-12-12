@@ -1,0 +1,936 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cancer Awareness & Support</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Open+Sans:wght@400;600&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary: #4a6fa5;
+            --secondary: #e63946;
+            --accent: #6a994e;
+            --light: #f8f9fa;
+            --dark: #343a40;
+            --gray: #6c757d;
+            --light-blue: #e3f2fd;
+            --light-pink: #fce4ec;
+            --transition: all 0.3s ease;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Open Sans', sans-serif;
+            line-height: 1.6;
+            color: var(--dark);
+            background-color: #fff;
+        }
+        
+        h1, h2, h3, h4 {
+            font-family: 'Poppins', sans-serif;
+            font-weight: 600;
+            margin-bottom: 1rem;
+        }
+        
+        .container {
+            width: 90%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 15px;
+        }
+        
+        /* Header & Navigation */
+        header {
+            background-color: white;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+        }
+        
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1rem 0;
+        }
+        
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-weight: 700;
+            font-size: 1.5rem;
+            color: var(--primary);
+        }
+        
+        .logo i {
+            color: var(--secondary);
+        }
+        
+        .nav-links {
+            display: flex;
+            list-style: none;
+            gap: 2rem;
+        }
+        
+        .nav-links a {
+            text-decoration: none;
+            color: var(--dark);
+            font-weight: 500;
+            transition: var(--transition);
+            position: relative;
+        }
+        
+        .nav-links a:hover {
+            color: var(--primary);
+        }
+        
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            bottom: -5px;
+            left: 0;
+            background-color: var(--primary);
+            transition: var(--transition);
+        }
+        
+        .nav-links a:hover::after {
+            width: 100%;
+        }
+        
+        .mobile-menu-btn {
+            display: none;
+            background: none;
+            border: none;
+            font-size: 1.5rem;
+            color: var(--primary);
+            cursor: pointer;
+        }
+        
+        /* Hero Section */
+        .hero {
+            margin-top: 80px;
+            background: linear-gradient(rgba(74, 111, 165, 0.85), rgba(74, 111, 165, 0.9)), url('https://images.unsplash.com/photo-1559757148-5c350d0d3c56?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80');
+            background-size: cover;
+            background-position: center;
+            color: white;
+            text-align: center;
+            padding: 5rem 0;
+            border-radius: 0 0 20px 20px;
+        }
+        
+        .hero h1 {
+            font-size: 3rem;
+            margin-bottom: 1.5rem;
+        }
+        
+        .hero p {
+            font-size: 1.2rem;
+            max-width: 800px;
+            margin: 0 auto 2rem;
+        }
+        
+        .cta-button {
+            display: inline-block;
+            background-color: var(--secondary);
+            color: white;
+            padding: 0.8rem 2rem;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 1.1rem;
+            transition: var(--transition);
+            border: 2px solid var(--secondary);
+        }
+        
+        .cta-button:hover {
+            background-color: transparent;
+            transform: translateY(-3px);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+        
+        /* Info Cards */
+        .info-cards {
+            padding: 5rem 0;
+            background-color: var(--light);
+        }
+        
+        .section-title {
+            text-align: center;
+            margin-bottom: 3rem;
+            color: var(--primary);
+            position: relative;
+        }
+        
+        .section-title::after {
+            content: '';
+            position: absolute;
+            width: 80px;
+            height: 3px;
+            background-color: var(--secondary);
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+        }
+        
+        .cards-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+        
+        .card {
+            background-color: white;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.08);
+            transition: var(--transition);
+        }
+        
+        .card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(0,0,0,0.1);
+        }
+        
+        .card-icon {
+            background-color: var(--light-blue);
+            color: var(--primary);
+            font-size: 2.5rem;
+            padding: 1.5rem;
+            text-align: center;
+        }
+        
+        .card-content {
+            padding: 1.5rem;
+        }
+        
+        .card-content h3 {
+            color: var(--primary);
+        }
+        
+        /* Quotes Section */
+        .quotes-section {
+            padding: 5rem 0;
+            background-color: white;
+        }
+        
+        .quotes-container {
+            max-width: 800px;
+            margin: 0 auto;
+            text-align: center;
+        }
+        
+        .quote-box {
+            background-color: var(--light-pink);
+            padding: 2.5rem;
+            border-radius: 10px;
+            margin-bottom: 2rem;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+            position: relative;
+        }
+        
+        .quote-box i {
+            font-size: 1.5rem;
+            color: var(--secondary);
+            opacity: 0.7;
+            position: absolute;
+        }
+        
+        .fa-quote-left {
+            top: 15px;
+            left: 15px;
+        }
+        
+        .fa-quote-right {
+            bottom: 15px;
+            right: 15px;
+        }
+        
+        .quote-text {
+            font-size: 1.3rem;
+            font-style: italic;
+            margin-bottom: 1rem;
+            color: var(--dark);
+        }
+        
+        .quote-author {
+            font-weight: 600;
+            color: var(--primary);
+        }
+        
+        .quote-controls {
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+            margin-top: 1.5rem;
+        }
+        
+        .quote-btn {
+            background-color: var(--primary);
+            color: white;
+            border: none;
+            padding: 0.7rem 1.5rem;
+            border-radius: 50px;
+            cursor: pointer;
+            font-weight: 600;
+            transition: var(--transition);
+        }
+        
+        .quote-btn:hover {
+            background-color: var(--accent);
+            transform: translateY(-3px);
+        }
+        
+        /* Contact Form */
+        .contact-section {
+            padding: 5rem 0;
+            background-color: var(--light);
+        }
+        
+        .contact-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 3rem;
+            align-items: center;
+        }
+        
+        .contact-info h3 {
+            color: var(--primary);
+            margin-bottom: 1.5rem;
+        }
+        
+        .contact-detail {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            margin-bottom: 1.5rem;
+        }
+        
+        .contact-detail i {
+            background-color: var(--light-blue);
+            color: var(--primary);
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.2rem;
+        }
+        
+        .form-container {
+            background-color: white;
+            padding: 2rem;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.08);
+        }
+        
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+        
+        .form-group label {
+            display: block;
+            margin-bottom: 0.5rem;
+            font-weight: 600;
+            color: var(--dark);
+        }
+        
+        .form-control {
+            width: 100%;
+            padding: 0.8rem 1rem;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            font-family: 'Open Sans', sans-serif;
+            font-size: 1rem;
+            transition: var(--transition);
+        }
+        
+        .form-control:focus {
+            outline: none;
+            border-color: var(--primary);
+            box-shadow: 0 0 0 2px rgba(74, 111, 165, 0.2);
+        }
+        
+        textarea.form-control {
+            min-height: 150px;
+            resize: vertical;
+        }
+        
+        .submit-btn {
+            background-color: var(--secondary);
+            color: white;
+            border: none;
+            padding: 0.9rem 2rem;
+            border-radius: 5px;
+            font-size: 1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: var(--transition);
+            width: 100%;
+        }
+        
+        .submit-btn:hover {
+            background-color: #d32f2f;
+            transform: translateY(-3px);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+        
+        /* Footer */
+        footer {
+            background-color: var(--dark);
+            color: white;
+            padding: 3rem 0 1.5rem;
+        }
+        
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin-bottom: 2rem;
+        }
+        
+        .footer-logo {
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: white;
+            margin-bottom: 1rem;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        
+        .footer-links h4, .footer-social h4 {
+            margin-bottom: 1.5rem;
+            color: white;
+        }
+        
+        .footer-links ul {
+            list-style: none;
+        }
+        
+        .footer-links li {
+            margin-bottom: 0.8rem;
+        }
+        
+        .footer-links a {
+            color: #ddd;
+            text-decoration: none;
+            transition: var(--transition);
+        }
+        
+        .footer-links a:hover {
+            color: var(--secondary);
+            padding-left: 5px;
+        }
+        
+        .social-icons {
+            display: flex;
+            gap: 1rem;
+        }
+        
+        .social-icons a {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 40px;
+            height: 40px;
+            background-color: rgba(255,255,255,0.1);
+            border-radius: 50%;
+            color: white;
+            text-decoration: none;
+            transition: var(--transition);
+        }
+        
+        .social-icons a:hover {
+            background-color: var(--secondary);
+            transform: translateY(-3px);
+        }
+        
+        .copyright {
+            text-align: center;
+            padding-top: 1.5rem;
+            border-top: 1px solid rgba(255,255,255,0.1);
+            color: #aaa;
+            font-size: 0.9rem;
+        }
+        
+        /* Responsive Design */
+        @media (max-width: 992px) {
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+        }
+        
+        @media (max-width: 768px) {
+            .mobile-menu-btn {
+                display: block;
+            }
+            
+            .nav-links {
+                position: fixed;
+                top: 70px;
+                left: 0;
+                width: 100%;
+                background-color: white;
+                flex-direction: column;
+                align-items: center;
+                padding: 2rem 0;
+                box-shadow: 0 5px 10px rgba(0,0,0,0.1);
+                transform: translateY(-100%);
+                opacity: 0;
+                transition: var(--transition);
+                z-index: 999;
+            }
+            
+            .nav-links.active {
+                transform: translateY(0);
+                opacity: 1;
+            }
+            
+            .hero {
+                margin-top: 70px;
+                padding: 3rem 0;
+            }
+            
+            .hero h1 {
+                font-size: 2rem;
+            }
+            
+            .quote-text {
+                font-size: 1.1rem;
+            }
+        }
+        
+        @media (max-width: 576px) {
+            .hero h1 {
+                font-size: 1.8rem;
+            }
+            
+            .section-title {
+                font-size: 1.8rem;
+            }
+            
+            .card {
+                margin-bottom: 1.5rem;
+            }
+            
+            .quote-box {
+                padding: 1.5rem;
+            }
+        }
+        
+        /* Loading Animation */
+        .loader {
+            display: inline-block;
+            width: 40px;
+            height: 40px;
+            border: 4px solid rgba(0, 0, 0, 0.1);
+            border-radius: 50%;
+            border-top-color: var(--primary);
+            animation: spin 1s ease-in-out infinite;
+            margin: 1rem auto;
+        }
+        
+        @keyframes spin {
+            to { transform: rotate(360deg); }
+        }
+        
+        /* Success Message */
+        .success-message {
+            background-color: #d4edda;
+            color: #155724;
+            padding: 1rem;
+            border-radius: 5px;
+            margin-top: 1rem;
+            text-align: center;
+            display: none;
+        }
+    </style>
+</head>
+<body>
+    <!-- Header & Navigation -->
+    <header>
+        <div class="container">
+            <nav>
+                <div class="logo">
+                    <i class="fas fa-ribbon"></i>
+                    <span>HopeTogether</span>
+                </div>
+                <button class="mobile-menu-btn" id="mobileMenuBtn">
+                    <i class="fas fa-bars"></i>
+                </button>
+                <ul class="nav-links" id="navLinks">
+                    <li><a href="#home">Home</a></li>
+                    <li><a href="#support">Support</a></li>
+                    <li><a href="#quotes">Inspiration</a></li>
+                    <li><a href="#contact">Contact</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero" id="home">
+        <div class="container">
+            <h1>You Are Not Alone in This Fight</h1>
+            <p>Join our community dedicated to raising cancer awareness, providing emotional support, and sharing resources to help patients, survivors, and their families navigate their journey with hope and courage.</p>
+            <a href="#contact" class="cta-button">Get Support Now</a>
+        </div>
+    </section>
+
+    <!-- Info Cards -->
+    <section class="info-cards" id="support">
+        <div class="container">
+            <h2 class="section-title">How We Can Help</h2>
+            <div class="cards-container">
+                <div class="card">
+                    <div class="card-icon">
+                        <i class="fas fa-hands-helping"></i>
+                    </div>
+                    <div class="card-content">
+                        <h3>Emotional Support</h3>
+                        <p>Connect with others who understand what you're going through. Join our support groups or one-on-one mentorship programs.</p>
+                    </div>
+                </div>
+                <div class="card">
+                    <div class="card-icon">
+                        <i class="fas fa-book-medical"></i>
+                    </div>
+                    <div class="card-content">
+                        <h3>Educational Resources</h3>
+                        <p>Access reliable information about different cancer types, treatments, and lifestyle management during and after treatment.</p>
+                    </div>
+                </div>
+                <div class="card">
+                    <div class="card-icon">
+                        <i class="fas fa-users"></i>
+                    </div>
+                    <div class="card-content">
+                        <h3>Community Events</h3>
+                        <p>Participate in awareness campaigns, fundraising events, and wellness workshops designed for patients and caregivers.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Quotes Section -->
+    <section class="quotes-section" id="quotes">
+        <div class="container">
+            <h2 class="section-title">Words of Hope & Inspiration</h2>
+            <div class="quotes-container">
+                <div class="quote-box">
+                    <i class="fas fa-quote-left"></i>
+                    <p class="quote-text" id="quoteText">Cancer is a word, not a sentence.</p>
+                    <p class="quote-author" id="quoteAuthor">- John Diamond</p>
+                    <i class="fas fa-quote-right"></i>
+                </div>
+                <div class="quote-controls">
+                    <button class="quote-btn" id="newQuoteBtn">
+                        <i class="fas fa-sync-alt"></i> New Quote
+                    </button>
+                    <button class="quote-btn" id="shareQuoteBtn">
+                        <i class="fas fa-share-alt"></i> Share
+                    </button>
+                </div>
+                <div id="quoteLoader" class="loader" style="display: none;"></div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Form -->
+    <section class="contact-section" id="contact">
+        <div class="container">
+            <h2 class="section-title">Get In Touch</h2>
+            <div class="contact-container">
+                <div class="contact-info">
+                    <h3>We're Here For You</h3>
+                    <p>Whether you're a patient, survivor, caregiver, or just want to learn more, our team is ready to support you.</p>
+                    
+                    <div class="contact-detail">
+                        <i class="fas fa-envelope"></i>
+                        <div>
+                            <h4>Email Us</h4>
+                            <p>support@hopetogether.org</p>
+                        </div>
+                    </div>
+                    
+                    <div class="contact-detail">
+                        <i class="fas fa-phone"></i>
+                        <div>
+                            <h4>Call Us</h4>
+                            <p>1-800-HOPE-NOW</p>
+                        </div>
+                    </div>
+                    
+                    <div class="contact-detail">
+                        <i class="fas fa-map-marker-alt"></i>
+                        <div>
+                            <h4>Visit Us</h4>
+                            <p>123 Hope Street, Health City, HC 12345</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="form-container">
+                    <form id="contactForm">
+                        <div class="form-group">
+                            <label for="name">Full Name</label>
+                            <input type="text" id="name" class="form-control" placeholder="Your Name" required>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="email">Email Address</label>
+                            <input type="email" id="email" class="form-control" placeholder="Your Email" required>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="message">Your Message</label>
+                            <textarea id="message" class="form-control" placeholder="How can we help you?" required></textarea>
+                        </div>
+                        
+                        <button type="submit" class="submit-btn">Send Message</button>
+                        <div class="success-message" id="successMessage">
+                            Thank you for your message! We'll get back to you soon.
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-about">
+                    <div class="footer-logo">
+                        <i class="fas fa-ribbon"></i>
+                        HopeTogether
+                    </div>
+                    <p>Dedicated to supporting cancer patients, survivors, and their families through awareness, education, and community.</p>
+                </div>
+                
+                <div class="footer-links">
+                    <h4>Quick Links</h4>
+                    <ul>
+                        <li><a href="#home">Home</a></li>
+                        <li><a href="#support">Support Services</a></li>
+                        <li><a href="#quotes">Inspiration</a></li>
+                        <li><a href="#contact">Contact Us</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-social">
+                    <h4>Connect With Us</h4>
+                    <div class="social-icons">
+                        <a href="#"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                        <a href="#"><i class="fab fa-youtube"></i></a>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="copyright">
+                <p>&copy; 2023 HopeTogether Cancer Awareness & Support. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Mobile Menu Toggle
+        const mobileMenuBtn = document.getElementById('mobileMenuBtn');
+        const navLinks = document.getElementById('navLinks');
+        
+        mobileMenuBtn.addEventListener('click', () => {
+            navLinks.classList.toggle('active');
+            mobileMenuBtn.innerHTML = navLinks.classList.contains('active') 
+                ? '<i class="fas fa-times"></i>' 
+                : '<i class="fas fa-bars"></i>';
+        });
+        
+        // Close mobile menu when clicking a link
+        document.querySelectorAll('.nav-links a').forEach(link => {
+            link.addEventListener('click', () => {
+                navLinks.classList.remove('active');
+                mobileMenuBtn.innerHTML = '<i class="fas fa-bars"></i>';
+            });
+        });
+        
+        // Quote API Integration
+        const quoteText = document.getElementById('quoteText');
+        const quoteAuthor = document.getElementById('quoteAuthor');
+        const newQuoteBtn = document.getElementById('newQuoteBtn');
+        const shareQuoteBtn = document.getElementById('shareQuoteBtn');
+        const quoteLoader = document.getElementById('quoteLoader');
+        
+        // Initial inspirational quotes in case API fails
+        const backupQuotes = [
+            {
+                text: "Cancer is a word, not a sentence.",
+                author: "John Diamond"
+            },
+            {
+                text: "You beat cancer by how you live, why you live, and in the manner in which you live.",
+                author: "Stuart Scott"
+            },
+            {
+                text: "Hope is the only thing stronger than fear.",
+                author: "Suzanne Collins"
+            },
+            {
+                text: "Strength does not come from physical capacity. It comes from an indomitable will.",
+                author: "Mahatma Gandhi"
+            },
+            {
+                text: "You have to fight through some bad days to earn the best days of your life.",
+                author: "Unknown"
+            },
+            {
+                text: "Every day is a new beginning. Take a deep breath and start again.",
+                author: "Unknown"
+            },
+            {
+                text: "Courage doesn't always roar. Sometimes courage is the quiet voice at the end of the day saying 'I will try again tomorrow'.",
+                author: "Mary Anne Radmacher"
+            }
+        ];
+        
+        // Function to fetch a new quote
+       async function fetchNewQuote() {
+    quoteLoader.style.display = 'block';
+    quoteText.textContent = 'Loading inspiring quote...';
+    quoteAuthor.textContent = '';
+
+    // 100% working, CORS-free APIs
+    const workingApis = [
+        "https://dummyjson.com/quotes/random"
+    ];
+
+    try {
+        // Pick random working API
+        const apiUrl = workingApis[Math.floor(Math.random() * workingApis.length)];
+        console.log("Trying API:", apiUrl);
+
+        const response = await fetch(apiUrl);
+
+        if (!response.ok) throw new Error("API failed");
+
+        const data = await response.json();
+
+        let quote = "";
+        let author = "";
+
+        // DummyJSON API
+        if (apiUrl.includes("dummyjson")) {
+            quote = data.quote;
+            author = data.author;
+        }
+
+        quoteText.textContent = `"${quote}"`;
+        quoteAuthor.textContent = `- ${author}`;
+    }
+
+    catch (error) {
+        console.log("Error fetching API → using backup quote:", error);
+
+        const randomIndex = Math.floor(Math.random() * backupQuotes.length);
+        const backup = backupQuotes[randomIndex];
+
+        quoteText.textContent = `"${backup.text}"`;
+        quoteAuthor.textContent = `- ${backup.author}`;
+    }
+
+    finally {
+        quoteLoader.style.display = 'none';
+    }
+}
+
+        
+        // Function to share quote
+        function shareQuote() {
+            const text = `${quoteText.textContent} ${quoteAuthor.textContent}`;
+            if (navigator.share) {
+                navigator.share({
+                    title: 'Inspirational Quote from HopeTogether',
+                    text: text,
+                    url: window.location.href
+                });
+            } else {
+                // Fallback for browsers that don't support Web Share API
+                navigator.clipboard.writeText(text).then(() => {
+                    alert('Quote copied to clipboard!');
+                });
+            }
+        }
+        
+        // Event listeners for quote buttons
+        newQuoteBtn.addEventListener('click', fetchNewQuote);
+        shareQuoteBtn.addEventListener('click', shareQuote);
+        
+        // Fetch first quote on page load
+        fetchNewQuote();
+        
+        // Auto-refresh quote every 30 seconds
+        setInterval(fetchNewQuote, 30000);
+        
+        // Contact Form Submission
+        const contactForm = document.getElementById('contactForm');
+        const successMessage = document.getElementById('successMessage');
+        
+        contactForm.addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            // Get form values
+            const name = document.getElementById('name').value;
+            const email = document.getElementById('email').value;
+            const message = document.getElementById('message').value;
+            
+            // In a real application, you would send this data to a server
+            // For this demo, we'll just show a success message
+            console.log('Form submitted:', { name, email, message });
+            
+            // Show success message
+            successMessage.style.display = 'block';
+            
+            // Reset form
+            contactForm.reset();
+            
+            // Hide success message after 5 seconds
+            setTimeout(() => {
+                successMessage.style.display = 'none';
+            }, 5000);
+        });
+        
+        // Smooth scrolling for navigation links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                e.preventDefault();
+                
+                const targetId = this.getAttribute('href');
+                if (targetId === '#') return;
+                
+                const targetElement = document.querySelector(targetId);
+                if (targetElement) {
+                    window.scrollTo({
+                        top: targetElement.offsetTop - 80,
+                        behavior: 'smooth'
+                    });
+                }
+            });
+        });
+    </script>
+</body>
+</html>
