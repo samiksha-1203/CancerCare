@@ -48,4 +48,3 @@ JavaScript
 ## 🔗 Public API Used
 
 DummyJSON Quotes API (for inspirational quotes)
-
